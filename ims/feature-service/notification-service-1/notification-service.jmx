@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.2.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="cif" elementType="Argument">
+            <stringProp name="Argument.name">cif</stringProp>
+            <stringProp name="Argument.value">95025149708</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="server_ip" elementType="Argument">
+            <stringProp name="Argument.name">server_ip</stringProp>
+            <stringProp name="Argument.value">192.168.6.11</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">9150</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="jwt_token" elementType="Argument">
+            <stringProp name="Argument.name">jwt_token</stringProp>
+            <stringProp name="Argument.value">eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IlN5c3RlbSIsImJyYW5jaCI6IjUwMDMiLCJhdWQiOlsiY2F0YWxvZy1zZXJ2aWNlLTEiLCJhY2NvdW50LXNlcnZpY2UtMSIsInRyYW5zZmVyLXNlcnZpY2UtMSIsImN1c3RvbWVycy1zZXJ2aWNlLTEiLCJyYXRlLXNlcnZpY2UtMSIsImNhdGFsb2ctc2VydmljZS0xIiwic3RhdGVtZW50LXNlcnZpY2UtMSIsImRvY3VtZW50LXNlcnZpY2UtMSIsImlkZW50aXR5LXNlcnZpY2UtMSIsImViaWxsaW5nLXNlcnZpY2UtMSIsInh5cC1zZXJ2aWNlLTEiLCJjYXJkLXN0YXRlbWVudC1zZXJ2aWNlLTEiLCJ0b2tlbml6YXRpb24tc2VydmljZS0xIiwidGF4LXNlcnZpY2UtMSIsInRhc2tzLXNlcnZpY2UtMSIsImNhc2hpbmctc2VydmljZS0xIiwibG9hbi1zZXJ2aWNlLTIiLCJhbGxvd2FuY2Utc2VydmljZSIsImJhbmNzLWlucXVpcnktc2VydmljZS0xIiwidGVsbGVyLXNlcnZpY2UtMSIsImJhbmNzLXRyYW5zYWN0aW9uLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMSIsImxpbWl0LXNlcnZpY2UtMSJdLCJkZXZpY2VfbmFtZSI6Ik1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDEwLjA7IFdpbjY0OyB4NjQpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS81Ny4wLjI5ODcuMTEwIFNhZmFyaS81MzcuMzYiLCJkZXZpY2VfYWRkcmVzcyI6IjEwLjYuMjA4LjE0IiwiZXhwIjo0NTQ1MzY2NTA4LCJsYW5nIjoiZW4tVVMiLCJpYXQiOjE1NDUzNjQ3MDgsImp0aSI6IjNiODk3NGIxLWJkNzgtNDg2NC1hNjgxLTJkMTYyZjZiMmQ3NiIsImVtYWlsIjoiZHVsZ3V1bi5lQGtoYW5iYW5rLmNvbSJ9.eXJ2fFAuVkhhFQQeDvuFzprG7mQcgI-Yygu_--Kn54PavevBUpfh1TiNkgcHfde6nace4_eSGAM1s5qai-QZ5Q</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="start_date" elementType="Argument">
+            <stringProp name="Argument.name">start_date</stringProp>
+            <stringProp name="Argument.value">20170101</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="end_date" elementType="Argument">
+            <stringProp name="Argument.name">end_date</stringProp>
+            <stringProp name="Argument.value">20190101</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="type" elementType="Argument">
+            <stringProp name="Argument.name">type</stringProp>
+            <stringProp name="Argument.value">transaction</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="toAddress" elementType="Argument">
+            <stringProp name="Argument.name">toAddress</stringProp>
+            <stringProp name="Argument.value">buri.b@khanbank.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ccAddress" elementType="Argument">
+            <stringProp name="Argument.name">ccAddress</stringProp>
+            <stringProp name="Argument.value">buri.b@khanbank.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="subject" elementType="Argument">
+            <stringProp name="Argument.name">subject</stringProp>
+            <stringProp name="Argument.value">Nuclear Bomb</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="body" elementType="Argument">
+            <stringProp name="Argument.name">body</stringProp>
+            <stringProp name="Argument.value">Kim Jong Un launched a missle</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="isHighImportance" elementType="Argument">
+            <stringProp name="Argument.name">isHighImportance</stringProp>
+            <stringProp name="Argument.value">true</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="contentType" elementType="Argument">
+            <stringProp name="Argument.name">contentType</stringProp>
+            <stringProp name="Argument.value">plain</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="start_page" elementType="Argument">
+            <stringProp name="Argument.name">start_page</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="page_record" elementType="Argument">
+            <stringProp name="Argument.name">page_record</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="id" elementType="Argument">
+            <stringProp name="Argument.name">id</stringProp>
+            <stringProp name="Argument.value">15151</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="notification/mail" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="notification/mail" enabled="true">
+          <elementProp name="HTTPsampler.Files" elementType="HTTPFileArgs">
+            <collectionProp name="HTTPFileArgs.files">
+              <elementProp name="C:/Users/90057/Desktop/behavioral-service-1.jmx" elementType="HTTPFileArg">
+                <stringProp name="File.path">C:/Users/90057/Desktop/behavioral-service-1.jmx</stringProp>
+                <stringProp name="File.paramname">File</stringProp>
+                <stringProp name="File.mimetype">text/plain</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${server_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">notification/mail?toAddress=${__urlencode(${toAddress})}&amp;ccAddress=${__urlencode(${ccAddress})}&amp;subject=${__urlencode(${subject})}&amp;body=${__urlencode(${body})}&amp;isHighImportance=${isHighImportance}&amp;contentType=${contentType} </stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${jwt_token}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="notification/message" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="notification/message" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${server_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">notification/message?start_page=${start_page}&amp;page_record=${page_record}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${jwt_token}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="notification.message" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="notification.message" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${server_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">notification/message/${id}</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${jwt_token}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="notification/openaccount" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="notification/notification/openaccount" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;account&quot;: &quot;string&quot;,&#xd;
+  &quot;accountType&quot;: &quot;string&quot;,&#xd;
+  &quot;balance&quot;: 0,&#xd;
+  &quot;currency&quot;: &quot;string&quot;,&#xd;
+  &quot;email&quot;: &quot;string&quot;,&#xd;
+  &quot;lang&quot;: &quot;string&quot;,&#xd;
+  &quot;loginName&quot;: &quot;string&quot;,&#xd;
+  &quot;postDate&quot;: &quot;string&quot;,&#xd;
+  &quot;product&quot;: &quot;string&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${server_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">notification/openaccount</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${jwt_token}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="notification/sms" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="notification/sms" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;account&quot;: &quot;string&quot;,&#xd;
+  &quot;message&quot;: &quot;string&quot;,&#xd;
+  &quot;mobile&quot;: &quot;string&quot;,&#xd;
+  &quot;priority&quot;: 0,&#xd;
+  &quot;sysid&quot;: 0&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${server_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">notification/sms</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${jwt_token}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="notification/transaction" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="notification/transaction" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;additionalInformation&quot;: &quot;string&quot;,&#xd;
+  &quot;address&quot;: &quot;string&quot;,&#xd;
+  &quot;amount&quot;: 0,&#xd;
+  &quot;baseAmount&quot;: 0,&#xd;
+  &quot;branch&quot;: &quot;string&quot;,&#xd;
+  &quot;chargeAmount&quot;: 0,&#xd;
+  &quot;chargeType&quot;: &quot;string&quot;,&#xd;
+  &quot;chequeNo&quot;: &quot;string&quot;,&#xd;
+  &quot;code&quot;: 0,&#xd;
+  &quot;consumerProduct&quot;: &quot;string&quot;,&#xd;
+  &quot;consumerType&quot;: &quot;string&quot;,&#xd;
+  &quot;corrBankAccount&quot;: &quot;string&quot;,&#xd;
+  &quot;corrBankCode&quot;: &quot;string&quot;,&#xd;
+  &quot;corrBankDetails&quot;: &quot;string&quot;,&#xd;
+  &quot;corrBankName&quot;: &quot;string&quot;,&#xd;
+  &quot;corrBankOption&quot;: &quot;string&quot;,&#xd;
+  &quot;corrBankPartyId&quot;: &quot;string&quot;,&#xd;
+  &quot;currency&quot;: &quot;string&quot;,&#xd;
+  &quot;description&quot;: &quot;string&quot;,&#xd;
+  &quot;email&quot;: &quot;string&quot;,&#xd;
+  &quot;endDate&quot;: &quot;string&quot;,&#xd;
+  &quot;errorCode&quot;: &quot;string&quot;,&#xd;
+  &quot;errorDescription&quot;: &quot;string&quot;,&#xd;
+  &quot;firstName&quot;: &quot;string&quot;,&#xd;
+  &quot;fixedChargeType&quot;: &quot;string&quot;,&#xd;
+  &quot;frequency&quot;: &quot;string&quot;,&#xd;
+  &quot;fromAccount&quot;: &quot;string&quot;,&#xd;
+  &quot;fromAccountName&quot;: &quot;string&quot;,&#xd;
+  &quot;fromAmount&quot;: 0,&#xd;
+  &quot;fromCurrency&quot;: &quot;string&quot;,&#xd;
+  &quot;fromRate&quot;: 0,&#xd;
+  &quot;fromRateMid&quot;: 0,&#xd;
+  &quot;indicator&quot;: &quot;string&quot;,&#xd;
+  &quot;innCode&quot;: &quot;string&quot;,&#xd;
+  &quot;journal&quot;: 0,&#xd;
+  &quot;journalNo&quot;: 0,&#xd;
+  &quot;kppCode&quot;: &quot;string&quot;,&#xd;
+  &quot;lastName&quot;: &quot;string&quot;,&#xd;
+  &quot;loginName&quot;: &quot;string&quot;,&#xd;
+  &quot;mainCurrency&quot;: 0,&#xd;
+  &quot;paymentCategory&quot;: &quot;string&quot;,&#xd;
+  &quot;phone&quot;: &quot;string&quot;,&#xd;
+  &quot;postDate&quot;: &quot;2020-07-23T05:34:27.188Z&quot;,&#xd;
+  &quot;promo&quot;: &quot;string&quot;,&#xd;
+  &quot;purpose&quot;: &quot;string&quot;,&#xd;
+  &quot;rateType&quot;: &quot;string&quot;,&#xd;
+  &quot;receiverCode&quot;: &quot;string&quot;,&#xd;
+  &quot;receiverDetails&quot;: &quot;string&quot;,&#xd;
+  &quot;receiverId&quot;: &quot;string&quot;,&#xd;
+  &quot;receiverName&quot;: &quot;string&quot;,&#xd;
+  &quot;receiverOption&quot;: &quot;string&quot;,&#xd;
+  &quot;receiverPartyId&quot;: &quot;string&quot;,&#xd;
+  &quot;recvBankAddress&quot;: &quot;string&quot;,&#xd;
+  &quot;recvBankCode&quot;: &quot;string&quot;,&#xd;
+  &quot;recvBankDetails&quot;: &quot;string&quot;,&#xd;
+  &quot;recvBankName&quot;: &quot;string&quot;,&#xd;
+  &quot;recvBankOption&quot;: &quot;string&quot;,&#xd;
+  &quot;recvBankPartyId&quot;: &quot;string&quot;,&#xd;
+  &quot;reference&quot;: &quot;string&quot;,&#xd;
+  &quot;register&quot;: &quot;string&quot;,&#xd;
+  &quot;selectType&quot;: &quot;string&quot;,&#xd;
+  &quot;senderInformation&quot;: &quot;string&quot;,&#xd;
+  &quot;session_id&quot;: &quot;string&quot;,&#xd;
+  &quot;startDate&quot;: &quot;string&quot;,&#xd;
+  &quot;status&quot;: 0,&#xd;
+  &quot;subject&quot;: &quot;string&quot;,&#xd;
+  &quot;suspenseAccount&quot;: &quot;string&quot;,&#xd;
+  &quot;systemDate&quot;: &quot;2020-07-23T05:34:27.188Z&quot;,&#xd;
+  &quot;teller&quot;: &quot;string&quot;,&#xd;
+  &quot;terminal&quot;: &quot;string&quot;,&#xd;
+  &quot;toAccount&quot;: &quot;string&quot;,&#xd;
+  &quot;toAccountName&quot;: &quot;string&quot;,&#xd;
+  &quot;toAmount&quot;: 0,&#xd;
+  &quot;toBank&quot;: &quot;string&quot;,&#xd;
+  &quot;toCurrency&quot;: &quot;string&quot;,&#xd;
+  &quot;toRate&quot;: 0,&#xd;
+  &quot;toRateMid&quot;: 0,&#xd;
+  &quot;tranFilter&quot;: &quot;string&quot;,&#xd;
+  &quot;tranPassword&quot;: &quot;string&quot;,&#xd;
+  &quot;transferId&quot;: &quot;string&quot;,&#xd;
+  &quot;txnCode&quot;: &quot;string&quot;,&#xd;
+  &quot;userId&quot;: &quot;string&quot;,&#xd;
+  &quot;uuid&quot;: &quot;string&quot;,&#xd;
+  &quot;valueDate&quot;: &quot;string&quot;,&#xd;
+  &quot;voCode&quot;: &quot;string&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${server_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">${port}</stringProp>
+          <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">notification/transaction</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Authorization</stringProp>
+                <stringProp name="Header.value">Bearer ${jwt_token}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,18 @@
+When login to ims (Given) <!--Ogson ims url -ruu login hiij orno-->  
+When check page loaded <text> (Given) <!--Page duudsanii daraa tuhain text page deer bainu esehiig shalgana-->
+Then refresh page <!--Page iig refresh hiij ogno-->
+When <transaction_menu> transaction process (Given) <!--Ogson guilgeenii tsonh deerh uildliig hiine jisheene 1010-->
+When <window_name> fill field <account_type> (Given) <!--Ogson lawlagaanii tsonhond ogson dansnii dugaariig bogloj ogno-->
+When create task (Given) <!--Task uusgeh uildel, huruunii heenees ehlene, telleriin REGISTERIIN dugaariig oruulna-->
+When create organization task (Given) <!--Deerhtei adilhan gehdee baiguulgiin registeriin dugaariig oruulna-->
+When approve task (Given, Then) <!--Task uussenii daraa BUAA approve hiij ogoh uildel-->
+Then decline task <!--Taskiig tsutslah uildel-->
+Then <id> screen shot by id <screenshot_name> <!--Elemetiin id gaar n screen shot hiine-->
+Then <class_name> screen shot by class name <screenshot_name> <!--Elementiin class nereer n screen shot hiine-->
+Then <class_name> screen shot <window_name> <!--Tuhain lawlagaand tohiroh l screen shot hiih-->
+When <window_name>-<value> multi window <account_type> (Given) <!--Olon tsonhtoi lawlagaanii medeelliig awahad ashiglagdah step jisheelbel <400-1>-->
+Then Do correction for <window_name> (When) <!--Tuhain guilgeenii tsonhnii correctiong hiine jisheelbel 1010 iin correction <1110> iig hiine-->
+Then <transaction_type> completed (Given) <!--Tuhain guilgee n amjilttai hiigdsen esehiig shalgana jisheelbel <income transaction>-->
+Then <operation_type> {name} <!--Ymar negen uildel hiih bol ene step iig ashiglana jisheelbel <add> menu, <delete> module-->
+Lesson test
+Test Zaya

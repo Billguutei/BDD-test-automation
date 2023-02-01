@@ -1,0 +1,110 @@
+pipeline {
+    agent none
+    options { skipDefaultCheckout() }
+    parameters {
+        string(name: 'IMS_URL', defaultValue: 'https://192.168.7.64:9001')
+		string(name: 'DATABASE', defaultValue: 'sit4db-scan.khanbank.local:1521/rwsit35ms')
+		choice(name: 'FEATURE',
+         choices: ['identity.role','identity.user',
+                   'inquiry.deposit.account.400','inquiry.deposit.account.440','inquiry.deposit.account.450',
+                   'inquiry.customer.account.9022','inquiry.customer.account.60450','inquiry.loan.account.10400',
+                   'inquiry.loan.account.10440','inquiry.loan.account.10450','inquiry.loan.account.13000',
+                   'inquiry.internal.account.20450','document.service.accountService',
+                   'document.service.card','document.service.create.account.corp','document.service.create.account.pers',
+                   'document.service.cyber','document.service.edit.account.inquiry','document.service.edit.account.owner',
+                   'document.service.edit.card','document.service.edit.close.account','document.service.edit.ebilling',
+                   'document.service.edit.guarantee','document.service.edit.loan','document.service.edit.online.registration',
+                   'document.service.edit.open.account','document.service.edit.open.account.alert','document.service.edit.savings',
+                   'document.service.edit.visa','document.service.group.operations','fee.charges.a.fee',
+                   'fee.no.fee', 'statement.dep.acc.statement', 'statement.dep.acc.statement.download', 
+                   'statement.loan.acc.statement', 'statement.loan.acc.statement.download', 'statement.request_list', 
+                   'transfer.domestic.4045', 'transfer.domestic.14045', 'transfer.domestic.14145', 'transfer.cash.outcome.1060', 'transfer.cash.income.1010', 'transfer.cash.income.1110', 'transfer.interbank.1054', 
+                   'transfer.exchange.21046', 'transfer.cass.outcome.20060', 'transfer.cass.income.20010', 'transfer.cass.income.20110', 'transfer.cash.close.account.3160', 'transfer.cash.outcome.1160', 'transfer.cass.outcome.20160', 'transfer.domestic.4145',
+                   'transfer.cash.close.account.3145', 'transfer.exchange.21146',
+                   'integrate.cash.drawer', 'integrate.open.cashlist', 'integrate.transaction.branch', 'integrate.transaction.teller','allowance.customer.search',
+                   'task',
+                   'all', 'impact', 'test'])
+    }
+    environment {
+        DIR = './ims/modules/constants.py'
+    }
+	stages {
+        stage('Check out'){
+            agent {
+	            label 'master'
+	        }
+            steps{
+                checkout scm
+            }
+        }
+        stage('Inserting inputs'){
+            agent {
+	            label 'master'
+	        }
+            steps{
+                sh """sed -i 's#"IMS_URL".*#"IMS_URL" : "${IMS_URL}",#g' $DIR"""
+                sh """sed -i 's#"DATABASE".*#"DATABASE" : "${DATABASE}"#g' $DIR"""
+                sh "chmod -R 775 *"
+            }
+        }
+		stage('Run BDD test'){
+			agent {
+	            label 'master'
+	        }
+			steps{
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    script {
+                        def feature_value = params.FEATURE
+                        def (value) = feature_value.tokenize( '.' )
+                        sh "/usr/local/bin/behave ./ims/features/database.feature"
+                        if (params.FEATURE == 'impact'){
+                            sh "/usr/local/bin/behave -f allure_behave.formatter:AllureFormatter -o allure-results ./ims/features/impact/*"
+                        }
+                        else if (params.FEATURE == 'test'){
+                            sh "/usr/local/bin/behave -f allure_behave.formatter:AllureFormatter -o allure-results ./ims/features/test/*"
+                        }
+                        else if (params.FEATURE != 'all' && params.FEATURE != 'impact') {
+                            sh "/usr/local/bin/behave -f allure_behave.formatter:AllureFormatter -o allure-results ./ims/features/${value}/${FEATURE}.feature"
+                        } else{
+                            sh "/usr/local/bin/behave -f allure_behave.formatter:AllureFormatter -o allure-results ./ims/features/*"
+                        }
+                    }
+                }
+			}
+            post {
+                always {
+                    allure([
+                    includeProperties: false,
+                    jdk: '/usr/bin/java',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'report']]
+                    ])
+                }
+            }
+		}
+        stage('Download'){
+            steps {
+               sh 'echo "artifact file" > generatedFile.txt'
+            }
+			agent {
+	            label 'master'
+	        }
+            post {
+                always {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+                        archiveArtifacts artifacts: '**/*.png, **/*.pdf', onlyIfSuccessful: false
+                    }
+                }
+            }
+        }
+        stage('Remove files'){
+            steps {
+               sh 'rm -rf *'
+            }
+			agent {
+	            label 'master'
+	        }
+        }
+	}
+}

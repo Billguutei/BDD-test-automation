@@ -1,0 +1,64 @@
+pipeline{
+    agent none
+    options{
+        skipDefaultCheckout()
+    }
+    stages {
+        stage('Check out'){
+            agent {
+	            label 'master'
+	        }
+            steps{
+                checkout scm
+            }
+        }
+        stage('start customerService'){
+            agent{
+                label 'master'
+            }
+            steps{
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    sh "chmod -R 775 *"
+                    sh "/usr/local/bin/behave ./CRMtest"
+                }
+            }
+        }
+        stage('Run BDD test'){
+            agent{
+                label 'master'
+            }
+            steps{
+                echo "Run test 1"
+            }
+        }
+        stage('result report'){
+            agent{
+                label 'master'
+            }
+            steps{
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    sh "/usr/local/bin/behave -f allure_behave.formatter:AllureFormatter -o allure-results ./CRMtest"
+                }
+            }
+            post {
+                always{
+                    allure([
+                        includeProperties: false,
+                        jdk: '/usr/bin/java',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'report']]
+                    ])
+                }
+            }
+        }
+        stage('Remove files'){
+            steps {
+                sh 'rm -rf *'
+            }
+            agent{
+                label 'master'
+            }
+        }
+    }
+}

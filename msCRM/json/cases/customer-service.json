@@ -1,0 +1,235 @@
+{
+	"INIT":{
+		"CUSTOMERSERVICE": "https://192.168.26.16:9081",
+		"TOKEN" : "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjcm0iLCJhdWQiOiJjcm0tYmFuY3MtdHJhbnNhY3Rpb24tc2VydmljZS0xLGNybS1iYW5jcy1pbnF1aXJ5LXNlcnZpY2UtMSxjcm0tc3RhdGVtZW50LXNlcnZpY2UtMSxjcm0tY3VzdG9tZXJzLXNlcnZpY2UtMSxjcm0tY2FyZC1pbXMtc2VydmljZS0xLGNybS1jYXJkLWlucXVpcnktYWRhcHRlci1zZXJ2aWNlLTEsY3JtLWNhcmQtc3RhdGVtZW50LXNlcnZpY2UtMSxjcm0tc21zYmFuay1zZXJ2aWNlLTEsY3JtLXdlbGZhcmUtc2VydmljZS0xLGNybS1zbXN3ZWItc2VydmljZS0xLGNybS1lYmlsbGluZy1zZXJ2aWNlLTEsY3JtLXNtc2JhbmstcmVnaXN0ZXItc2VydmljZSIsInByb2R1Y3QiOiJjcm0iLCJpc3MiOiJjcm0iLCJ0eXBlIjoiU3lzdGVtIiwiZXhwIjoyNTgwOTc0OTU1LCJpYXQiOjE1ODAzNzAxNTV9.tYZIKhX2eYvGFwUxW7mnGMT9yl5q-Q6O_eJIS7-eKtYIPA6fN_1B_SgyxxKkGyQz456ASF190Bq_Uy8-AX3qbg"
+	},
+    "CUSTOMERSERVICE":{
+        "PARAMETER":{
+			"contract" : { 
+			    "ENDPOINT":"/customers/contract/check/#cif#",
+				"PARAM":{
+                    "cif"      :  "95038002179"
+				}
+			},
+			"referenceCif" : { 
+			    "ENDPOINT":"/customers/#cif#",
+				"PARAM":{
+                    "cif"      :  "95038002179"
+				}
+			},
+			"referenceAccount" : { 
+			    "ENDPOINT":"/customers/#account#/account",
+				"PARAM":{
+                    "account"  : "95038002179"
+				}
+			}
+        },
+        "NOPARAMETER":{
+			"contract" :{
+			    "ENDPOINT":"/customers/contract",
+				"BODY" : {
+                    "branch"       : ["","123123123123123","a123"],
+                    "cif"          : ["","123123123123123123123123","as111112","95007214759"],
+					"domainId"     : ["","12313123123","as31"]
+				}
+            },
+			"mergecif" :{
+			    "ENDPOINT":"/customers/mergecif",
+				"BODY" : {
+                    "branch": ["5004","","11222222","18941"],
+                    "teller": ["18941","1aa23"],
+                    "terminal": ["1#a","123123123","aaa","220","","189"],
+                    "inCorrectCif": ["2930@#","44444444444457787878787878","adasd","95002477111","","5119001709"],
+                    "correctCif": ["233#33@w2",""]
+				}
+			},
+            "getCustomer": {
+                "ENDPOINT":"/customers/getCustomer"
+            },
+			"segment" : { 
+			    "ENDPOINT":"/customers/segment",
+				"BODY":{
+                    "branch"          : ["","123123123123123","a1s"],
+                    "teller"          : ["","123123121123"],
+                    "terminal"        : ["","123123123","a1#"],
+                    "cif"             : ["","123123123123","12345525443"],
+                    "segmentCode"     : ["","12312312","aa","3"]
+				}
+			},
+			"activate" : {
+                "ENDPOINT" : "/customers/activate",
+                "BODY":{
+                    "branch"          : ["","123123123123123","a1s"],
+                    "teller"          : ["","123123121123","a1#"],
+                    "terminal"        : ["","123123123","a1#"],
+                    "cif"             : ["","123123123123","12345525443"]                    
+                }           
+            },
+			"hide" : {
+			    "ENDPOINT":"/customers/hide",
+				"BODY": {
+                    "cifAccountNumber"  : ["2419088770133","5119001709","5119001709","5700251362","5675225840","5419088770","5419088838","5119009038","95038002179",""],
+                    "system"            : ["DEP","CIF","DE1","DEP1212",""],
+                    "branch"            : ["5004","","12313123123123123","5004","125a"],
+					"teller"            : ["999","4ad",""], 
+					"terminal"          : ["1aa","12312312312333133","ass","w@3",""],
+					"system"            : ["a13","ADADDDDD","111","a@#","5","CIF"],
+                    "securityCodeLevel" : ["a1","123123123","asd","2#@","","9"],
+                    "userToAccess"      : ["asd","23423423423","2312","18941","9"],
+                    "branchToAccess"    : ["a12","12312311231231","asda","100",""]			    
+				},
+				"SAMEPARAM": {
+					"account"    : "cifAccountNumber",
+					"cif"        : "cifAccountNumber",
+					"branch"     : "branchToAccess",
+					"security"   : "securityCodeLevel"
+				}
+			},
+			"setCustomer" :{ 
+			    "ENDPOINT" : "/customers/setCustomer",
+				"BODY" : {
+                    "branch":                      ["20","30","40","997","5004",""],
+                    "teller":                      ["18941",""],
+                    "terminal":                    ["941",""],
+                    "cif":                         ["95038002146","9502220592","","9502200136362"],
+                    "homePhone":                   ["454545"],
+                    "register":                    ["asdasdasdasdasd","5388457","","asd123123123123123123123123"],
+                    "custNum":                     ["783423124954",""],
+                    "custType":                    ["50","80","90","10","20","30","40"],
+                    "postCode":                    ["123123"],
+                    "relationshipManagerNum":      ["131231321321325458845","asdasd","18941"],
+                    "titleCode":                   ["00"],
+                    "businessName":                ["ЮНИВИШН11","","213123123 12312 3123 12 3123 123123123 23 123123123 13123 1 23 12 3123123 12 32312 312 312312 3 123 12 3123 1"],
+                    "addr1":                       ["СБД 8-Р ХОРОО TEST",""],
+                    "addr2":                       ["Ч.БАТЧИМЭГ ББУС ИТ-ТЭЙ TESTTEST"],
+                    "addr3":                       ["Түр хаяг ..."],
+                    "addr4":                       ["чек серт № ..."],
+                    "domicile1":                   ["AZ","asdasdasd","AA"],
+                    "homePhoneNum":                ["187777777","12312312312312344"],
+                    "businessPhoneNum":            ["895656","13123123123123123"],
+                    "mobileNum":                   ["8548745454","13345645678888741"],
+                    "nationality":                 ["UY","AFA","","11"],
+                    "occupancyCode":               ["H","T","F","O"],
+                    "langCode":                    ["01","02","03","11234"],
+                    "idNum":                       ["asdasdasdasdasd","538845755","","242342342222222222222222222222222222222222222222222222222","RD00013361"],
+                    "idIssueDt":                   ["03052013","89052013","89052013111111111111"],
+                    "idIssuePlace":                ["ТӨВ ОЛГОСОН"],
+                    "idType":                      ["0002","00020","0012",""],
+                    "domRisk":                     ["ZZ","23","121313"],
+                    "crossBorderRisk":             ["02","23","121313"],
+                    "segmentCode":                 ["00","22","23","24","25","28","55","02","27","06","08","66","10","81","32","33","03","30","34","05","40","41","45","04","07","75","70"],
+                    "lockerHolder":                ["","1","11"],
+                    "homeBranchNum":               ["05004","1231321",""],
+                    "custLimitInd":                ["Y","Yaaa","N"],
+                    "custParentLimitInd":          ["N","Yaa"],
+                    "industLimitInd":              ["N"],
+                    "countryLimitInd":             ["N","Yaa"],
+                    "sectorLimitInd":              ["Y","Yaa"],
+                    "countryRisk":                 ["AT","dfsdf","AA"],
+                    "fill":                        ["0"],
+                    "passportCountry":             ["AT","asdasd"],
+                    "email":                       ["univision@unitel.mn","FINANCE@asdasdasdasdasd.MNaaasdasdasdasdasdasasdasddasdaa",""],
+                    "exemptionProfile":            ["0000"],
+                    "prefferedHomeBranch":         ["00000"],
+                    "progCode":                    ["000"],
+                    "pagerNum":                    ["000000000"],
+                    "idExpDt":                     ["31032022"],
+                    "centralFileNum":              ["0000000000"],
+                    "centralControlNum":           ["0000000000000000"],
+                    "grntrFlag":                   ["0"],
+                    "bor_risk1":                   ["05"],
+                    "bor_risk_dt1":                ["20209999"],
+                    "indcode2":                    ["A","B","C","D","E","F","G","H","I","J","K","L","M","O","P","Q","R","S","T","U","X","Y","Z"],
+                    "indsubcode2":                 ["58000"],
+                    "indsubcode2_desc":            ["Telecommunications"],
+                    "lastMaintDt":                 ["04032020"],
+                    "taxPayerNumber":              ["asdasd","2222123123123123123123123123","5358257111"],
+                    "influentialPoliticalPerson":  ["Y","N","aaaa"],
+                    "foreignInvestmentIndicator":  ["N"],
+                    "birthDt1":                    ["00000000"],
+                    "numOfDependents":             ["00"],
+                    "emplyedSince2":               ["00000000"],
+                    "occupationDesc1":             ["65"],
+                    "occupation":                  ["0000"],
+                    "emplyedSince1":               ["00000000"],
+                    "employedTo":                  ["00000000"],
+                    "occupationCode":              ["0000"],
+                    "economicNum":                 ["ХМ12334455"],
+                    "cbnNum_1":                    ["000000000000000"],
+                    "employerType":                ["00000"],
+                    "registeredCompanyNum":        ["9011155001"],
+                    "contactName1_1":              ["ДОРЖПАЛАМ1","","qweqweasdasd123123asdasdasd"],
+                    "contactName1_2":              ["ЭНХБАТ1","","asdasdasdasd24234234asdaasd"],
+                    "contactName1_3":              ["ХД88020289","","asdasdasdasdasdqweqweqwe13123123"],
+                    "contactTitleCode1":           ["01","12121",""],
+                    "contactName2_1":              ["Саруул"],
+                    "contactName2_2":              ["Түмэнбаяр"],
+                    "contactName2_3":              ["ЦБ98021105"],
+                    "contactTitleCode2":           ["01"],
+                    "registeredBusinessNum":       ["100","13123123123123","3","17"],
+                    "contactDtOfBirth1":           ["00000000"],
+                    "contactPhoneNum1":            ["8554555","asdasd","2342342424234234234234234",""],
+                    "contactDtOfBirth2":           ["00000000"],
+                    "contactPhoneNum2":            ["77778080"],
+                    "contactFaxNum1":              ["00000000","","asdas","aasdasdasda3123212aaa3"],
+                    "currentBoardDtExpire":        ["00000000"],
+                    "secondBusinessAddLocLine1":   ["Хаяг1"],
+                    "secondBusinessAddLocLine2_1": ["Түр оршин суух хаяг"],
+                    "secondBusinessAddLocLine2_2": ["ZZ"],
+                    "secondBusinessAddLocLine2_3": ["AO","asda","","111"],
+                    "secondBusinessAddLocLine3_1": ["Захиргаа"],
+                    "secondBusinessAddLocLine3_2": ["98855455","asdasda","asdasdasdasdasdasdasdasdasdasdasdasdasd",""],
+                    "secondBusinessAddLocLine3_3": ["20"],
+                    "secondBusinessAddLocLine4_1": [""],
+                    "secondBusinessAddLocLine4_2": ["20190202","asdasdaa","asdasdasdasdasd","","11193252"],
+                    "secondBusinessAddLocLine4_3": ["20200101"],
+                    "gazetteNum":                  ["12312312","License","asdasdasdasdasdasdasdasdasdasdasd",""],
+                    "gazetteAmendDt":              ["00000000"],
+                    "name1":                       ["123123","ОДЖАРГАЛ111","asdasdasdasdasdasdasdasdasdasdasdasdasd",""],
+                    "nationaity1":                 ["11","WS","wqwe",""],
+                    "registrationNumber1":         ["УК67120aa115","asdasdasdasdasdasdasdasda",""],
+                    "percentage1":                 ["1.0"],
+                    "name2":                       ["ОД"],
+                    "nationaity2":                 ["US"],
+                    "registrationNumber2":         ["УХ68111318"],
+                    "percentage2":                 ["2.0"],
+                    "percentage3":                 ["3.0"],
+                    "percentage4":                 ["4.0"],
+                    "percentage5":                 ["10.0"],
+                    "swiftCode1":                  ["AGMOMNUB"],
+                    "engBusName":                  ["SKYMEDIA"],
+                    "resFlag1":                    ["N"],
+                    "creditAlert":                 ["N"],
+                    "createDt":                    ["99999999"],
+                    "vipcode":                     ["","1","3","7","5","9","B","D"],
+                    "env_Risk_Lvl":                ["1"],
+                    "SBPostCode"  :                ["5879","123123123123123123123123"],
+                    "faxNum" :                     ["79548"],
+        
+                    "custFirstName":               ["Оюун","asdasdasdasdasdasdasdadasdadasdawqweqweqweqweqweqweqweqweqweqweqwe",""],
+                    "custLastName":                ["Бат","asdasdasdasdasdasdasdadasdadasdawqweqweqweqweqweqweqweqweqweqweqwe",""],
+                    "employment":                  ["N","E","S","R","H","T","C","222"],
+					"gender_1"  :                  ["s","sssssssssssssswww"],
+					"religion"  :                  ["aa","06","asdasdasdasdasd"],
+					"contractName1_1":             ["bataa","asdasdasdasdasdasdasdadasdadasdawqweqweqweqweqweqweqweqweqweqweqwe"],
+					"contractName1_2":             ["Ganaa","asdasdasdasdasdasdasdadasdadasdawqweqweqweqweqweqweqweqweqweqweqwe"],
+					"birthPlace":                  ["1 төрөх"],
+					"currEmpName":                 ["ХААН БАНК"],
+					"postOfficeBox":               ["3654"],
+					"city_1":                      ["Ulaanbaatar"],
+					"emplyedSince2":               ["13032020"],
+					"currEmpAddr1":                ["ХУД 15 ХОРОО"],
+					"currEmpAddr2":                ["ХУД 15 ХОРОО 1"],
+					"occupationDesc1":             ["100","65"],
+					"bussDesc":                    ["Банк санхүү"],
+					"birthPlace":                  ["1 төрөх"],
+					"birthPlace":                  ["1 төрөх"]
+					
+				},
+				"SAMEPARAM":{
+				    "SBPostCode" : "secondBusinessAddLocPostCode"
+				}
+			}
+        }	
+	}
+}

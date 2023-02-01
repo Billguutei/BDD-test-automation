@@ -1,0 +1,1 @@
+card-inquiry-adapter-service's jmx file stored here

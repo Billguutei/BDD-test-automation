@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="card-mail-service-1" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="ssl" elementType="Argument">
+            <stringProp name="Argument.name">ssl</stringProp>
+            <stringProp name="Argument.value">${__P(serviceSsl)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="server" elementType="Argument">
+            <stringProp name="Argument.name">server</stringProp>
+            <stringProp name="Argument.value">${__P(serviceIp)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">${__P(servicePort)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="content-type" elementType="Argument">
+            <stringProp name="Argument.name">content-type</stringProp>
+            <stringProp name="Argument.value">application/xml</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="jwt" elementType="Argument">
+            <stringProp name="Argument.name">jwt</stringProp>
+            <stringProp name="Argument.value">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTM3OSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsInR5cGUiOiJFbXBsb3llZSIsImJyYW5jaCI6IjUwMjgiLCJhdWQiOlsiYWNjb3VudC1zZXJ2aWNlLTEiLCJsaW1pdC1zZXJ2aWNlLTEiLCJlYmlsbGluZy1zZXJ2aWNlIiwidHJhbnNmZXItc2VydmljZS0xIiwiY3VzdG9tZXJzLXNlcnZpY2UtMSIsInJhdGUtc2VydmljZS0xIiwiY2F0YWxvZy1zZXJ2aWNlLTEiLCJzdGF0ZW1lbnQtc2VydmljZS0xIiwiZG9jdW1lbnQtc2VydmljZS0xIiwiaWRlbnRpdHktc2VydmljZS0xIiwieHlwLXNlcnZpY2UtMSIsImNhcmQtc3RhdGVtZW50LXNlcnZpY2UtMSIsInRva2VuaXphdGlvbi1zZXJ2aWNlLTEiLCJ0YXgtc2VydmljZS0xIiwidGFza3Mtc2VydmljZS0xIiwiY2FzaGluZy1zZXJ2aWNlLTEiLCJsb2FuLXNlcnZpY2UtMiIsInh5cC1zZXJ2aWNlLTEiLCJjYXJkcy1zZXJ2aWNlLTEiLCJjYXJkLW1haWwtc2VydmljZS0xIiwicGF5bWVudC1zZXJ2aWNlLTEiLCJjZ2Etc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pbmljcm0tc2VydmljZS0xIiwia3BpLXNlcnZpY2UtMSIsImFsbG93YW5jZS1zZXJ2aWNlIiwiZm9yZXgtc2VydmljZS0xIiwidXNhLXZpc2EtZmVlLXNlcnZpY2UtMSIsIm5vc3Ryby1zZXJ2aWNlLTEiLCJjYXJkLWltcy1zZXJ2aWNlLTEiLCJjYXJkLWNvbnRyb2xsZXItc2VydmljZS0xIiwidGVuZGVyLXNlcnZpY2UtMSIsImxlZ2FsLXNlcnZpY2UtMSIsImZlZS1zZXJ2aWNlLTIiLCJnb2xkLXNlcnZpY2UtMSIsInRyYW5zZmVyLWludGVybmFsLXNlcnZpY2UtMSIsImRpc3BpdGNoZXItc2VydmljZS0xIiwidGVsbGVyLXNlcnZpY2UtMSIsInRva2VuaXphdGlvbi1zZXJ2aWNlLTEiLCJwbGVkZ2VyZWdpc3Rlci1zZXJ2aWNlLTEiLCJidWxrLXRyYW5zYWN0aW9uLXNlcnZpY2UtMSIsIm9yZ2FuaXphdGlvbi1zZXJ2aWNlLTEiLCJiZWhhdmlvcmFsLXNlcnZpY2UtMiIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwic21zLWJhbmstc2VydmljZS0xIiwiY29ycG9yYXRlcG9ydGFsLXNlcnZpY2UtMSIsImNyZWRpdC1zdGF0ZW1lbnQtc2VydmljZS0xIiwiY3JlZGl0LW92ZXJkdWUtc2VydmljZS0xIiwiZmVlLXNlcnZpY2UtMSIsImtoYW5iYW5rLXFtcy0xIiwicW1zLWNvcmUtc2VydmljZS0xIiwicW1zLXJlcG9ydC1zZXJ2aWNlLTEiLCJyZXF1ZXN0LXNlcnZpY2UtMSIsInJlcG9ydC1zZXJ2aWNlLTIiLCJjZW50cmFsLWFkZHJlc3Mtc2VydmljZS0xIiwic21zd2ViLXNlcnZpY2UtMSIsImNhcmR0eG4tcHViLXNlcnZpY2UtMSIsImJhbmNzLXRyYW5zYWN0aW9uLXNlcnZpY2UtMSJdLCJkZXZpY2VfYWRkcmVzcyI6IjEwLjYuMjEwLjEwMyIsImV4cCI6MjY4OTM1NzYxNSwibGFuZyI6Im1uLU1OIiwiaWF0IjoxNTgyMzU1ODE1LCJqdGkiOiI1MzQwYTExOS00NzE4LTRiZjQtODgyOC04MzczZDc2ZjI5ZTQifQ.AmzyrZ_DIfoIYUQ0RWHkmd3Sx8nmZFgtbYCDJ-6NOXyJdj8XUp4UJEmkrm4kOnAB_V9KS2NL1EPDyB6ReRItYg</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="threadUser" elementType="Argument">
+            <stringProp name="Argument.name">threadUser</stringProp>
+            <stringProp name="Argument.value">${__P(user,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="threadLoop" elementType="Argument">
+            <stringProp name="Argument.name">threadLoop</stringProp>
+            <stringProp name="Argument.value">${__P(loop,1)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Authorization</stringProp>
+            <stringProp name="Header.value">${jwt}</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">content-type</stringProp>
+            <stringProp name="Header.value">${content-type}</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.domain">${server}</stringProp>
+        <stringProp name="HTTPSampler.port">${port}</stringProp>
+        <stringProp name="HTTPSampler.protocol">${ssl}</stringProp>
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="service endpoints" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST: /tests" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;request&gt;&#xd;
+   &lt;accountnumber&gt;000000941065&lt;/accountnumber&gt;&#xd;
+   &lt;currency&gt;496&lt;/currency&gt;&#xd;
+   &lt;email&gt;Temuujin.ts@khanbank.com&lt;/email&gt;&#xd;
+   &lt;holder&gt;1&lt;/holder&gt;&#xd;
+   &lt;hpan&gt;16&lt;/hpan&gt;&#xd;
+   &lt;itype&gt;FE&lt;/itype&gt;&#xd;
+   &lt;productName&gt;T/UP Dual Card 1&lt;/productName&gt;&#xd;
+   &lt;reversal&gt;0&lt;/reversal&gt;&#xd;
+   &lt;transType&gt;781&lt;/transType&gt;&#xd;
+   &lt;txnamount&gt;500.0&lt;/txnamount&gt;&#xd;
+   &lt;udate&gt;20210210&lt;/udate&gt;&#xd;
+   &lt;utime&gt;1&lt;/utime&gt;&#xd;
+   &lt;utrnno&gt;300252568512312313&lt;/utrnno&gt;&#xd;
+&lt;/request&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/tests</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">Бусад системүүдээс ирсэн мессежийг хүлээн авна Тест хийхэд ашиглана</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

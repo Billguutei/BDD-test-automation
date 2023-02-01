@@ -1,0 +1,318 @@
+//kbDeliveryPipeline.groovy
+
+def call(Map pipelineParams){
+
+    pipeline {
+        agent none
+        parameters {
+            booleanParam(name: 'unittest', defaultValue: true, description: 'Should I run unittest stage')
+            booleanParam(name: 'build', defaultValue: true, description: 'Should I run build stage')
+            booleanParam(name: 'deploy_uat', defaultValue: true, description: 'Should I run deploy stage')
+            booleanParam(name: 'bdd', defaultValue: false, description: 'Should I run BDD test')
+            // booleanParam(name: 'use_eureka', defaultValue: true, description: 'Should I use EUREKA')
+            booleanParam(name: 'performance_test', defaultValue: false, description: 'Should I run JMeter test')
+            // Added by Bat.D 2020-06-23
+            // Solving global configuration issue. If you add global-config on docker secret add here
+            choice(name: 'global_configs', choices: ['global-config','global-config-2', 'global-config-eureka', 'global-config-och', 'global-config-crm'], description: 'Pick global-config')
+            string(name: 'max_memory', defaultValue: 'Xmx1024m', description: 'Max memory')
+            string(name: 'replica_number', defaultValue: '1', description: 'Replica count?')
+            string(name: 'tag', defaultValue: 'latest', description: 'tag shdee')
+            string(name: 'stage', defaultValue: 'uat', description: 'uat stage deer tavina')
+            string(name: 'label', defaultValue: 'master', description: 'uat config label')
+
+            // test stage paramteres
+            //booleanParam(name: 'integration_test', defaultValue: true)
+            string(name: 'thread', defaultValue: '2', description: 'Thread count')
+            string(name: 'loop', defaultValue: '2', description: 'Loop count')
+            //def tok = UUID.randomUUID().toString()
+        }
+        environment {
+            tok = UUID.randomUUID().toString()
+
+            MAVEN_OPTS="-Xms1028m -Xmx1303m -Xss1024m"
+            
+            //user = env.BUILD_USER_ID
+        }
+    
+    stages {
+
+
+        stage('Checkout'){
+            agent {
+                label 'master'
+            }
+            when {
+                expression { params.build == true && params.unittest == true }
+            }
+            steps {
+
+                sh label: 'clearing old data', script: 'rm -rf *' //Pipeline Declarative Plugin
+
+                checkout([
+                    $class : 'GitSCM',
+                    branches : [[name: pipelineParams.branch]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions : [/*[$class: 'CleanBeforeCheckout']*/],
+                    submoduleCfg : [],
+                    userRemoteConfigs: [[credentialsId: pipelineParams.credentialsId, url: pipelineParams.scmUrl]]
+                    ])
+
+                    script {
+                        docker.withRegistry(pipelineParams.dtrUrl, pipelineParams.credentialsIdProdDtr) {
+                            sh 'docker pull dtr.khanbank.local:8443/devops/builder:latest'
+                        }
+                    }
+
+                    sh "cp /var/lib/jenkins/root-ca.cer ${env.WORKSPACE}"
+                    sh "cp /var/lib/jenkins/runMvn.sh ${env.WORKSPACE}"
+                    sh "chmod 775 runMvn.sh"
+                    sh "sed -i 's/{{CONFIG_OPTION}}/${pipelineParams.configLocation}/g' ${env.WORKSPACE}/runMvn.sh"
+                    sh "docker run -w /opt/workspace -v $HOME/.m2:/root/.m2 -v ${env.WORKSPACE}:/opt/workspace dtr.khanbank.local:8443/devops/builder:latest sh runMvn.sh"     
+
+               input message: 'Ready to start?'
+                
+                }            
+                post {
+                    always {
+                        publishHTML (target : [allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'target/site/jacoco',
+                        reportFiles: 'index.html',
+                        reportName: 'Unit-test-report',
+                        reportTitles: 'UNIT test report'])
+                    }
+                }
+        }
+
+        stage('checkout git && build') {
+            agent {
+                label 'master' 
+            }
+            when {
+                expression { params.build == true }
+            }
+            steps {              
+                checkout([
+                    $class : 'GitSCM',
+                    branches : [[name: pipelineParams.branch]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions : [/*[$class: 'CleanBeforeCheckout']*/],
+                    submoduleCfg : [],
+                    userRemoteConfigs: [[credentialsId: pipelineParams.credentialsId, url: pipelineParams.scmUrl]]
+                ])
+
+                sh label: 'setting new build number', 
+                script: "mvn versions:set -DnewVersion=${env.BUILD_ID}-RELEASE"
+                withSonarQubeEnv("SonarQube") {
+                    // sh "export MAVEN_OPTS=-128M"
+                    sh "mvn clean package -D${pipelineParams.configLocation}=global-config.yml"
+                    //sh "mvn clean package sonar:sonar -Dspring.config.additional-location=global-config.yml"
+                }
+
+                stash includes: 'target/*.jar', name: 'app'
+                stash includes: 'Dockerfile', name: 'dockerfile'
+                stash includes: 'entrypoint.sh', name: 'entrypoint'
+                
+
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+    //    stage ('Quality Gate') {
+    //        agent {
+    //            label 'master'
+    //        }
+    //        when {
+    //            expression { params.build == true }
+    //        }
+    //        steps {
+    //            timeout(time: 2, unit: 'MINUTES') {
+    //                waitForQualityGate abortPipeline: true
+    //            }
+    //        }
+    //    }
+        
+         stage ('Pushing Docker Image to UAT') {
+            agent {
+                //label 'docker-build-prod'
+                label 'docker-builder'
+            }
+            when {
+                expression { params.build == true && params.deploy_uat == true }
+            }
+            steps {
+                sh label: 'clearing old data', script: 'rm -rf entrypoint.sh Dockerfile target/' //Pipeline Declarative Plugin
+
+                unstash 'app'
+                unstash 'dockerfile' //Instead of stash....should these be pulled from artifacrt repo?
+                unstash 'entrypoint'
+                
+
+                sh "cp -R /deployments/apm-agent/apm-agent.jar ${env.WORKSPACE}"
+                sh 'chown -R builder:builder entrypoint.sh'
+                sh 'chmod -R 755 entrypoint.sh'
+
+                script {
+                    dockerImagePush(dtrUrl: pipelineParams.dtrUATUrl, 
+                                    credentialsIdDtr: pipelineParams.credentialsIdUatDtr, 
+                                    buildId: env.BUILD_ID, 
+                                    repoName: pipelineParams.repoName, 
+                                    nameSpace: pipelineParams.nameSpace, 
+                                    port: pipelineParams.port)
+                }
+            }
+        }
+
+
+
+        stage ('Deployment UAT') {
+            agent {
+                label 'docker-builder'
+            }
+            when {
+                expression { params.deploy_uat == true }
+            }
+            steps {
+                
+                emailSendMattermost (service: pipelineParams.serviceName,
+                info: "UAT Deployment started!",
+                jobname: env.JOB_NAME,
+                channel: "devops_members",
+                buildNumber: env.BUILD_NUMBER,
+                currentStage: "Deployment UAT")
+
+                script {
+                    // if (params.use_eureka == true) {
+                    //     global_config = 'global-config-eureka'
+                    // } 
+                    // else {
+                    //     global_config = 'global-config-och'
+                    // } 
+                    
+                    sh label: 'Deploying to uat docker', script: """
+                        . /home/builder/.bash_profile
+                        cd ${env.WORKSPACE}/kubernetes
+                        sed -i 's/{{SERVICE_NAME}}/${pipelineParams.serviceName}/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        sed -i 's/{{DTR_URL}}/dtr.uat.khanbank.local:8443/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        sed -i 's/{{TAG}}/${params.tag}/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        sed -i 's/{{GLOBAL_CONFIG}}/${params.global_configs}/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        sed -i 's/{{INGRESS_URL}}/${pipelineParams.serviceName}.app.${stage}.khanbank.local/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        sed -i 's/{{REPLICA_NUMBER}}/${params.replica_number.toInteger()}/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        sed -i 's/{{APP_PORT}}/${pipelineParams.port}/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        sed -i 's/{{NAMESPACE}}/${pipelineParams.nameSpace}/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        sed -i 's/{{JVM_ARG}}/${params.max_memory}/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        sed -i 's/{{REPONAME}}/${pipelineParams.repoName}/g' ${env.WORKSPACE}/kubernetes/deployment.yaml
+                        kubectl apply -f deployment.yaml --force
+
+
+                        sed -i 's/{{SERVICE_NAME}}/${pipelineParams.serviceName}/g' ${env.WORKSPACE}/kubernetes/service.yaml
+                        sed -i 's/{{APP_PORT}}/${pipelineParams.port}/g' ${env.WORKSPACE}/kubernetes/service.yaml
+                        kubectl apply -f service.yaml
+
+
+                        sed -i 's/{{SERVICE_NAME}}/${pipelineParams.serviceName}/g' ${env.WORKSPACE}/kubernetes/virtualService.yaml
+                        sed -i 's/{{INGRESS_URL}}/${pipelineParams.serviceName}.app.${stage}.khanbank.local/g' ${env.WORKSPACE}/kubernetes/virtualService.yaml
+                        kubectl apply -f virtualService.yaml
+                    """
+                }
+            }
+        }
+
+        stage('BDD Testing'){
+            agent {
+                label 'master'
+            }
+            when {
+                expression { params.bdd == true }
+            }
+            steps {
+
+                checkout([
+                    $class : 'GitSCM',
+                    branches : [[name: 'alpha']],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions : [/*[$class: 'CleanBeforeCheckout']*/],
+                    submoduleCfg : [],
+                    //userRemoteConfigs: [[credentialsId: pipelineParams.credentialsId, url: 'https://devops/Khanbank/Continuous%20Testing/_git/Continuous%20Testing']]
+                    userRemoteConfigs: [[credentialsId: pipelineParams.credentialsId, url: 'https://devops.khanbank.local/DevOps-Engineers/BDD-TEST-Automation/_git/BDD-TEST-Automation']]
+                    ])
+
+
+                    // Get our Frontend Testing Container and mount project directory @ /opt/workspace
+
+                    script {
+                        docker.withRegistry(pipelineParams.dtrUrl, pipelineParams.credentialsIdProdDtr) {
+                            sh 'docker pull dtr.khanbank.local:8443/devops/test_frontend:latest'
+                        }
+                    }
+
+                //  System setup
+                    sh "cp /var/lib/jenkins/root-ca.cer ${env.WORKSPACE}"
+
+                    sh "cp /var/lib/jenkins/tools/chromedriver/chromedriver ${env.WORKSPACE}"
+
+                //  Setting file permissions
+                    sh "chmod 775 runBehave.sh"
+
+                //  Launching the docker container.  Note that we mount the workspace and the .m2 directory into the container.
+                    sh "docker run -w /opt/workspace -v ${env.WORKSPACE}:/opt/workspace dtr.khanbank.local:8443/devops/test_frontend:latest sh runBehave.sh"
+
+            }
+            post {
+                always {
+                    allure([
+                    includeProperties: false,
+                    jdk: '/usr/bin/java',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'report']]
+                    ])          
+
+                sh label: 'clearing old data', script: 'rm -rf *' //Pipeline Declarative Plugin
+
+                }
+            }
+        }
+
+        stage('JMeter Testing'){
+            agent {
+                label 'master'
+            }
+            when {
+                expression { params.performance_test == true }
+            }
+            steps {
+                    script {
+                        docker.withRegistry(pipelineParams.dtrUrl, pipelineParams.credentialsIdProdDtr) {
+                            sh 'docker pull dtr.khanbank.local:8443/devops/builder:latest'
+                        }
+                    }
+
+                    sh "cp ./src/runJMeter.sh ${env.WORKSPACE}"
+                    sh "chmod 775 runJMeter.sh"
+
+                    sh "docker run -w /opt/workspace -e loop=${env.loop} -e thread=${env.thread} -v $HOME/.m2:/root/.m2 -v ${env.WORKSPACE}:/opt/workspace dtr.khanbank.local:8443/devops/builder:latest sh runJMeter.sh"
+
+                    script {
+                        perfReport filterRegex: '', sourceDataFiles: 'Jmeter-test/Statement/stress-statement.jtl'
+                    }
+            }
+            post {
+                    always {
+                        publishHTML (target : [allowMissing: false,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'Jmeter-test/Statement/HTML',
+                        reportFiles: 'index.html',
+                        reportName: 'Stress-test-report',
+                        reportTitles: 'Stress test report'])
+                    }
+                }
+        }
+}
+

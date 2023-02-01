@@ -1,0 +1,143 @@
+pipeline {
+    agent none
+    options { skipDefaultCheckout() }
+    parameters {
+        string(name: 'IMS_URL', defaultValue: 'http://192.168.7.141:9101')
+		string(name: 'USER_NAME', defaultValue: '90019')
+		password(name: 'USER_PASSWORD', defaultValue: 'kb2020*')
+		string(name: 'BUAA_NAME', defaultValue: '90019')
+		password(name: 'BUAA_PASSWORD', defaultValue: 'kb2020*')
+		string(name: 'REGISTER_NO', defaultValue: 'ОЮ92102830')
+		string(name: 'AMOUNT', defaultValue: '3000')
+		string(name: 'HIGH_AMOUNT', defaultValue: '3000100')
+		string(name: 'RECEIVING_BANK', defaultValue: 'Монгол Банк')
+		string(name: 'RECIPIENT', defaultValue: 'Нямхүү')
+		string(name: 'DESCRIPTION', defaultValue: 'test')
+		string(name: 'DEPOSIT_ACCOUNT', defaultValue: '5070167256')
+		string(name: 'GEND_ACCOUNT', defaultValue: '50030011010000005')
+		string(name: 'LOAN_ACCOUNT', defaultValue: '5118017619')		
+		string(name: 'RECEIVING_ACCOUNT', defaultValue: '559089705688')
+        string(name: 'CLOSE_ACCOUNT', defaultValue: '5118017596')	
+		string(name: 'CIF', defaultValue: '00009500301699882')	
+		choice(name: 'CURRENCRY_IN', choices: ['MNT','AUD','CAD','CHF','CNY','EUR','GBP','HKD','JPY','KRW','NZD','RUB','GD','USD'])
+		choice(name: 'CURRENCRY_OUT', choices: ['MNT','AUD','CAD','CHF','CNY','EUR','GBP','HKD','JPY','KRW','NZD','RUB','GD','USD'])
+		choice(name: 'FEATURE',
+         choices: ['identity.role','identity.user',
+                   'inquiry.deposit.account.400','inquiry.deposit.account.440','inquiry.deposit.account.450',
+                   'inquiry.customer.account.9022','inquiry.customer.account.60450','inquiry.loan.account.10400',
+                   'inquiry.loan.account.10440','inquiry.loan.account.10450','inquiry.loan.account.13000',
+                   'inquiry.internal.account.20450','document.service.accountService',
+                   'document.service.card','document.service.create.account.corp','document.service.create.account.pers',
+                   'document.service.cyber','document.service.edit.account.inquiry','document.service.edit.account.owner',
+                   'document.service.edit.card','document.service.edit.close.account','document.service.edit.ebilling',
+                   'document.service.edit.guarantee','document.service.edit.loan','document.service.edit.online.registration',
+                   'document.service.edit.open.account','document.service.edit.open.account.alert','document.service.edit.savings',
+                   'document.service.edit.visa','document.service.group.operations','fee.charges.a.fee',
+                   'fee.no.fee', 'statement.dep.acc.statement', 'statement.dep.acc.statement.download', 
+                   'statement.loan.acc.statement', 'statement.loan.acc.statement.download', 'statement.request_list', 
+                   'transfer.domestic.4045', 'transfer.domestic.14045', 'transfer.domestic.14145', 'transfer.cash.outcome.1060', 'transfer.cash.income.1010', 'transfer.cash.income.1110', 'transfer.interbank.1054', 
+                   'transfer.exchange.21046', 'transfer.cass.outcome.20060', 'transfer.cass.income.20010', 'transfer.cass.income.20110', 'transfer.cash.close.account.3160', 'transfer.cash.outcome.1160', 'transfer.cass.outcome.20160', 'transfer.domestic.4145',
+                   'transfer.cash.close.account.3145', 'transfer.exchange.21146',
+                   'integrate.cash.drawer', 'integrate.open.cashlist', 'integrate.transaction.branch', 'integrate.transaction.teller','allowance.customer.search',
+                   'task',
+                   'all', 'impact', 'test'])
+    }
+    environment {
+        DIR = './ims/modules/constants.py'
+    }
+	stages {
+        stage('Check out'){
+            agent {
+	            label 'master'
+	        }
+            steps{
+                checkout scm
+            }
+        }
+        stage('Inserting inputs'){
+            agent {
+	            label 'master'
+	        }
+            steps{
+                sh """sed -i 's#"IMS_URL".*#"IMS_URL" : "${IMS_URL}"#g' $DIR"""
+                sh """sed -i 's#"USER_NAME".*#"USER_NAME" : "${USER_NAME}",#g' $DIR"""
+                sh """sed -i 's#"USER_PASSWORD".*#"USER_PASSWORD" : "${USER_PASSWORD}",#g' $DIR"""
+                sh """sed -i 's#"BUAA_USERNAME".*#"BUAA_USERNAME" : "${BUAA_NAME}",#g' $DIR"""
+                sh """sed -i 's#"BUAA_PASSWORD".*#"BUAA_PASSWORD" : "${BUAA_PASSWORD}"#g' $DIR"""
+                sh """sed -i 's#"REGISTER_NO".*#"REGISTER_NO" : "${REGISTER_NO}",#g' $DIR"""
+                sh """sed -i 's#"AMOUNT".*#"AMOUNT" : ${AMOUNT},#g' $DIR"""
+                sh """sed -i 's#"HIGH_AMOUNT".*#"HIGH_AMOUNT" : ${HIGH_AMOUNT},#g' $DIR"""
+                sh """sed -i 's#"RECEIVING_BANK".*#"RECEIVING_BANK" : "'"${RECEIVING_BANK}"'",#g' $DIR"""
+                sh """sed -i 's#"RECIPIENT".*#"RECIPIENT" : "${RECIPIENT}",#g' $DIR"""
+                sh """sed -i 's#"DESCRIPTION".*#"DESCRIPTION" : "${DESCRIPTION}"#g' $DIR"""
+                sh """sed -i 's#"DEPOSIT_ACCOUNT".*#"DEPOSIT_ACCOUNT" : "${DEPOSIT_ACCOUNT}",#g' $DIR"""
+                sh """sed -i 's#"GEND_ACCOUNT".*#"GEND_ACCOUNT" : "${GEND_ACCOUNT}",#g' $DIR"""
+                sh """sed -i 's#"LOAN_ACCOUNT".*#"LOAN_ACCOUNT" : "${LOAN_ACCOUNT}",#g' $DIR"""
+                sh """sed -i 's#"RECEIVING_ACCOUNT".*#"RECEIVING_ACCOUNT" : "${RECEIVING_ACCOUNT}"#g' $DIR"""
+                sh """sed -i 's#"CLOSE_ACCOUNT".*#"CLOSE_ACCOUNT" : "${CLOSE_ACCOUNT}",#g' $DIR"""
+                sh """sed -i 's#"CIF".*#"CIF" : "${CIF}",#g' $DIR"""
+                sh """sed -i 's#"IN".*#"IN" : "${CURRENCRY_IN}",#g' $DIR"""
+                sh """sed -i 's#"OUT".*#"OUT" : "${CURRENCRY_OUT}",#g' $DIR"""
+                sh "chmod -R 775 *"
+            }
+        }
+		stage('Run BDD test'){
+			agent {
+	            label 'master'
+	        }
+			steps{
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                    script {
+                        def feature_value = params.FEATURE
+                        def (value) = feature_value.tokenize( '.' )
+                        if (params.FEATURE == 'impact'){
+                            sh "/usr/local/bin/behave -f allure_behave.formatter:AllureFormatter -o allure-results ./ims/features/impact/*"
+                        }
+                        else if (params.FEATURE == 'test'){
+                            sh "/usr/local/bin/behave -f allure_behave.formatter:AllureFormatter -o allure-results ./ims/features/test/*"
+                        }
+                        else if (params.FEATURE != 'all' && params.FEATURE != 'impact') {
+                            sh "/usr/local/bin/behave -f allure_behave.formatter:AllureFormatter -o allure-results ./ims/features/${value}/${FEATURE}.feature"
+                        } else{
+                            sh "/usr/local/bin/behave -f allure_behave.formatter:AllureFormatter -o allure-results ./ims/features/*"
+                        }
+                    }
+                }
+			}
+            post {
+                always {
+                    allure([
+                    includeProperties: false,
+                    jdk: '/usr/bin/java',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'report']]
+                    ])
+                }
+            }
+		}
+        stage('Download'){
+            steps {
+               sh 'echo "artifact file" > generatedFile.txt'
+            }
+			agent {
+	            label 'master'
+	        }
+            post {
+                always {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+                        archiveArtifacts artifacts: '**/*.png, **/*.pdf', onlyIfSuccessful: false
+                    }
+                }
+            }
+        }
+        stage('Remove files'){
+            steps {
+               sh 'rm -rf *'
+            }
+			agent {
+	            label 'master'
+	        }
+        }
+	}
+}

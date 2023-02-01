@@ -1,0 +1,1 @@
+notification-service's jmx file stored here

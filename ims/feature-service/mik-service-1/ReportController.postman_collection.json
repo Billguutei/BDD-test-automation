@@ -1,0 +1,706 @@
+{
+	"info": {
+		"_postman_id": "0b7ef100-795d-4261-9552-8b492c9bb39d",
+		"name": "ReportController",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/{date}/{flag}/transaction/log",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/20200822/0/transaction/log",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"20200822",
+						"0",
+						"transaction",
+						"log"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/{date}/{flag}/transaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/20200822/0/transaction/",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"20200822",
+						"0",
+						"transaction",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/transaction/insert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"txnCode\": \"98903\",\r\n    \"txnDate\": \"20200822\",\r\n    \"key\": \"5001565410\",\r\n    \"mikTxnCode\": \"9908\",\r\n    \"amount\": 200000,\r\n    \"description\": \"qqwerrty\",\r\n    \"flag\": \"0\",\r\n    \"user\": \"90058\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/transaction/insert",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"transaction",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/transaction/update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"rowId\": \"AAAV+ZAAAAAB1q1AAA\",\r\n    \"key\": \"5000056693\",\r\n    \"txnCode\": \"98903 \",\r\n    \"mikTxnCode\": \"5039\",\r\n    \"txnDate\": \"20200822\",\r\n    \"amount\": 2000000,\r\n    \"description\": \"asdqweq\",\r\n    \"flag\": null,\r\n    \"user\": \"90058\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/transaction/update",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"transaction",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/transaction/delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"rowId\": \"AAAV+ZAAAAAB1q1AAA\",\r\n    \"key\": \"5000056693\",\r\n    \"txnCode\": \"98903 \",\r\n    \"mikTxnCode\": \"5039\",\r\n    \"txnDate\": \"20200822\",\r\n    \"amount\": 2000000,\r\n    \"description\": \"asdqweq\",\r\n    \"flag\": null,\r\n    \"user\": \"90058\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/transaction/delete",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"transaction",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/transaction/change/{date}/{flag}/history",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/transaction/change/20200822/0/history",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"transaction",
+						"change",
+						"20200822",
+						"0",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/repayment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/repayment",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"repayment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/repayment/calc",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/repayment/calc",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"repayment",
+						"calc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/nrs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/nrs",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"nrs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/xml/repayment/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/xml/repayment/create",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"xml",
+						"repayment",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/xml/{date}/{flag}/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/xml/20160902/1/create",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"xml",
+						"20160902",
+						"1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/repayment/create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/repayment/create",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"repayment",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/upload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/90058/Downloads/example (1).xlsx"
+					}
+				},
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/upload",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/calculations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/calculations",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"calculations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/calculations/download",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/calculations/download",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"calculations",
+						"download"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/send",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/send",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/upload/loan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOTE4NSIsInByb2R1Y3QiOiJJbnRlcm5hbCIsImRldmljZV9pZCI6IkludGVybmFsIiwiaXNzIjoiZWRnZSIsIm1vYmlsZSI6Ijk5MzIzNzI4IiwidHlwZSI6IkVtcGxveWVlIiwiYnJhbmNoIjoiNTAwMyIsImF1ZCI6WyJiZWhhdmlvcmFsLXNlcnZpY2UtMSIsImJlaGF2aW9yYWwtc2VydmljZS0xIiwibWlrLXNlcnZpY2UtMSIsIm1pay1zZXJ2aWNlLTIiLCJtaWstc2VydmljZSIsIk1pay1zZXJ2aWNlIiwibm90aWZpY2F0aW9uLXNlcnZpY2UtMiIsIm5vdGlmaWNhdGlvbi1zZXJ2aWNlIl0sImRldmljZV9uYW1lIjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzU3LjAuMjk4Ny4xMTAgU2FmYXJpLzUzNy4zNiIsImRldmljZV9hZGRyZXNzIjoiMTAuNi4yMDguMTQiLCJleHAiOjk5NDUzNjY1MDgsImxhbmciOiJlbi1VUyIsImlhdCI6MTU0NTM2NDcwOCwianRpIjoiM2I4OTc0YjEtYmQ3OC00ODY0LWE2ODEtMmQxNjJmNmIyZDc2IiwiZW1haWwiOiJkdWxndXVuLmVAa2hhbmJhbmsuY29tIn0.44yRgS51l29ytd5ISNNLsGjwZPxXH9iSv8dUSWJ9PAdOQytmwRyiO0OL76d4IQAcHSNwyQaPORR1Mcrocns62Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://192.168.6.21:9330/mik/upload/loan",
+					"protocol": "https",
+					"host": [
+						"192",
+						"168",
+						"6",
+						"21"
+					],
+					"port": "9330",
+					"path": [
+						"mik",
+						"upload",
+						"loan"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
